@@ -1,9 +1,8 @@
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import React, { useContext } from "react";
 import { UserContext } from "../../context/UserProvider";
 import DatePicker from "../../Components/DatePicker/DatePicker.jsx"
 import S from "../Cadastro/Cadastro.module.css"
-import Button from "../../Components/Button/Button.jsx"
 
 const Cadastro = () => {
     const { dataForm, handleChange } = useContext(UserContext);
@@ -44,7 +43,7 @@ const Cadastro = () => {
                     value={dataForm.address}
                     onChange={(e) => handleChange(e, "address")}
                 />
-                <Button />
+                <Button variant="contained">Cadastrar</Button>
             </form>
         </div>
     )
