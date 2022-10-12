@@ -13,8 +13,8 @@ const Header = () => {
                     <Link className={S.link} to={"/cadastro"}>
                         Cadastro
                     </Link>
-                    <Link className={S.link}>
-                        RIS
+                    <Link className={S.link} to={"/clientes"}>
+                        Clientes
                     </Link>
                     <Link className={S.link}>
                         PACS
