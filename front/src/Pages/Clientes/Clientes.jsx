@@ -15,7 +15,7 @@ const Clientes = () => {
               <CardClients
                 key={index}
                 name={cliente.name}
-                bith_date={cliente.birth_date}
+                birth_date={cliente.birth_date}
                 email={cliente.email}
                 address={cliente.address}
               />
