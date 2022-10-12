@@ -1,24 +1,21 @@
 import React from 'react'
 
 const CardClients = ( 
-    name,
-    birth_date,
-    email,
-    address) => {
+    obj) => {
   return (
     <div>
-        <h2>{name}</h2>
+        <h2>{obj.name}</h2>
         <p>
-            <b>Nascimento:</b>
-            {birth_date}
+            <b>Nascimento: </b>
+            {obj.birth_date}
         </p>
         <p>
-            <b>Email:</b>
-            {email}
+            <b>Email: </b>
+            {obj.email}
         </p>
         <p>
-            <b>Endereço</b>
-            {address}
+            <b>Endereço: </b>
+            {obj.address}
         </p>
     </div>
   )
