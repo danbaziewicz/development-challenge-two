@@ -4,9 +4,11 @@ import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { UserContext } from '../../context/UserProvider';
 
 export default function MaterialUIPickers() {
   const [value, setValue] = useState(null);
+  const { dataForm } = useContext(UserContext);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -17,11 +19,10 @@ export default function MaterialUIPickers() {
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
-            console.log(newValue)
+            dataForm.birth_date = `${newValue.$D}/${newValue.$M+1}/${newValue.$y}`
+            setValue(null)
           }}
-          
           renderInput={(params) => <TextField {...params} />}
-          
         />
       </Stack>
     </LocalizationProvider>
