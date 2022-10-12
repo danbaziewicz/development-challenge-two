@@ -5,7 +5,7 @@ import DatePicker from "../../Components/DatePicker/DatePicker.jsx"
 import S from "../Cadastro/Cadastro.module.css"
 
 const Cadastro = () => {
-    const { dataForm, handleChange } = useContext(UserContext);
+    const { dataForm, handleChange, handleClick } = useContext(UserContext);
 
     return (
         <div className={S.divForm}>
@@ -43,7 +43,7 @@ const Cadastro = () => {
                     value={dataForm.address}
                     onChange={(e) => handleChange(e, "address")}
                 />
-                <Button variant="contained">Cadastrar</Button>
+                <Button variant="contained" onClick={handleClick}>Cadastrar</Button>
             </form>
         </div>
     )
