@@ -17,10 +17,10 @@ export default function MaterialUIPickers() {
           label="Nascimento"
           inputFormat="DD/MM/YYYY"
           value={value}
+          disableFuture={true}
           onChange={(newValue) => {
             setValue(newValue);
             dataForm.birth_date = `${newValue.$D}/${newValue.$M+1}/${newValue.$y}`
-            setValue(null)
           }}
           renderInput={(params) => <TextField {...params} />}
         />
