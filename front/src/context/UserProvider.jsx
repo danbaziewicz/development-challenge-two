@@ -1,4 +1,5 @@
 import React, {createContext, useState} from "react";
+import {insertUser} from "../Service/Service.jsx"
 
 export const UserContext = createContext();
 
@@ -14,11 +15,11 @@ const UserProvider = ({children}) => {
 
     function handleChange(e, key) {
         setDataForm({...dataForm, [key]: e.target.value});
-        console.log(dataForm)
     }
 
     function handleClick(e) {
         e.preventDefault();
+        insertUser(dataForm);
         setUserList([...userList, dataForm]);
         setDataForm({
             name: "",
