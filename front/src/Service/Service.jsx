@@ -6,14 +6,14 @@ const instance = axios.create({
 
 export const getUser = async () => {
     const response = await instance.get("/users");
-    const json = await response.data.users;
-    return json;
+    const{users} = response.data
+    return users;
 }
 
 export const insertUser = async (body) => {
-    const response = await post("/users", body);
-    const json = await response.data.users;
-    return json;
+    const response = await instance.post("/users", body);
+    const{users} = response.data
+    return users;
 }
 
 export const deleteUser = async (id) => {
