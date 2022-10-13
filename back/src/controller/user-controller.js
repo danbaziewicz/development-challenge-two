@@ -11,8 +11,7 @@ const userController = (app) => {
         try {
             const allUsers = await userModel.getUsers()
             res.json({
-                "usuários": allUsers,
-                "error": false
+                users: allUsers,
             })
         } catch (error) {
             res.json({
@@ -28,7 +27,6 @@ const userController = (app) => {
             const user = await userModel.getUserId(userId)
             res.json({
                 "usuário": user,
-                "error": false
             })
         } catch (error) {
             res.json({
@@ -40,13 +38,13 @@ const userController = (app) => {
 
     app.post('/users', async (req,res) => {
         const body = req.body
+        console.log(body)
         try {
             const newUser = createUser(body.name, body.birth_date, body.email, body.address)
             await userModel.insertUser(newUser)
             res.json({
                 "msg": "Usuário inserido com sucesso",
                 "user": newUser,
-                "error": false
             })
         } catch (error) {
             res.json({
@@ -62,7 +60,6 @@ const userController = (app) => {
             await userModel.deleteUser(id)
             res.json({
                 "msg": `Usuário ${id} deletado com sucesso`,
-                "error": false
             })
         } catch (error) {
             res.json({
@@ -82,7 +79,6 @@ const userController = (app) => {
             res.json({
                 "msg": "Usuário atualizado com sucesso",
                 "user": newUser,
-                "error": false
             })
         } catch (error) {
             res.json({
