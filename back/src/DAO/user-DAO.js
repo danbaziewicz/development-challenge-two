@@ -30,7 +30,7 @@ const daoUser = {
 
     insertUser: (user) => {
         const INSERT_USER = `
-        INSERT INTO USERS (name, birth_date, email, address)
+        INSERT INTO users (name, birth_date, email, address)
         VALUES (?, ?, ?, ?)
         `
 
