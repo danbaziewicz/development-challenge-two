@@ -1,9 +1,10 @@
 import React from 'react'
+import S from './CardClients.module.css'
 
 const CardClients = ( 
     obj) => {
   return (
-    <div>
+    <div className={S.divCard}>
         <h2>{obj.name}</h2>
         <p>
             <b>Nascimento: </b>
