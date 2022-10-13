@@ -20,7 +20,7 @@ export default function MaterialUIPickers() {
           disableFuture={true}
           onChange={(newValue) => {
             setValue(newValue);
-            dataForm.birth_date = `${newValue.$D}/${newValue.$M+1}/${newValue.$y}`
+            dataForm.birth_date = `${newValue.$y}/${newValue.$M+1}/${newValue.$D}`
           }}
           renderInput={(params) => <TextField {...params} />}
         />
