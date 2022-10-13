@@ -1,16 +1,35 @@
-import React, { useContext } from 'react'
+import React, { useState } from 'react'
+import { useEffect } from 'react';
 import CardClients from '../../Components/CardClients/CardClients';
-import { UserContext } from "../../context/UserProvider";
 import S from "../Clientes/Clientes.module.css"
+import {getUser} from "../../Service/Service"
 
 const Clientes = () => {
-    const { userList } = useContext(UserContext)
+    const [users, setUsers] = useState([]);
+    const [reload, setReload] = useState(false);
+    
+    const request = async (close) => {
+      const response = await getUser(close)
+      setUsers(response)
+    }
+
+    useEffect(() => {
+      request("/users")
+    }, [])
+
+    useEffect(()=> {
+      if(reload) {
+        request("/users")
+        setReload(false)
+      }
+    }, [reload])
+
   return (
     <div>
         <h2>Clientes</h2>
         <div className={S.card}>
-        {userList.length > 0 ? (
-          userList.map((cliente, index) => {
+        {users.length > 0 ? (
+          users.map((cliente, index) => {
             return (
               <CardClients
                 key={index}
