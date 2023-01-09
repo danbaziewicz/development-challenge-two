@@ -4,8 +4,10 @@ import { useContext, useState } from 'react'
 import S from '../Modal/StyleModal.module.css'
 import { UserContext } from '../../context/UserProvider.jsx';
 import { updateUser } from '../../Service/Service.jsx';
+import moment from 'moment';
 
 const ModalEdit = (obj) => {
+    const dataNascimento = moment(obj.birth_date).format("DD/MM/YYYY")
     const {dataForm}= useContext(UserContext);
     const [open, setOpen] = useState(false);
     const [formPut, setFormPut] = useState({
@@ -38,7 +40,7 @@ const ModalEdit = (obj) => {
                         <h2>{obj.name}</h2>
                         <p>
                             <b>Nascimento: </b>
-                            {obj.birth_date}
+                            {dataNascimento}
                         </p>
                         <p>
                             <b>Email: </b>
