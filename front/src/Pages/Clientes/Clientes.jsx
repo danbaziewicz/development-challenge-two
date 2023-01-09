@@ -37,6 +37,8 @@ const Clientes = () => {
                 birth_date={cliente.birth_date}
                 email={cliente.email}
                 address={cliente.address}
+                id={cliente.id}
+                setReload={setReload}
               />
             );
           })
