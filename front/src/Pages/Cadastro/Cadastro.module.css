@@ -8,9 +8,9 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 30%;
-    height: 400px;
-    border: solid 1px black;
-    border-radius: 5px;
+    width: 500px;
+    height: 500px;
     margin-top: 50px;
+    box-shadow: 0px 0px 14px 3px #cccccc;
+    border-radius: 7px;
 }
