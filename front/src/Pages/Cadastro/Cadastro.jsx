@@ -6,10 +6,10 @@ import S from "../Cadastro/Cadastro.module.css"
 
 const Cadastro = () => {
     const { dataForm, handleChange, handleClick } = useContext(UserContext);
-
     return (
         <div className={S.divForm}>
             <form>
+                <h2>Cadastro</h2>
                 <TextField
                     sx={{ width: '250px', padding: '10px'}}
                     id="outlined-basic"
@@ -43,7 +43,7 @@ const Cadastro = () => {
                     value={dataForm.address}
                     onChange={(e) => handleChange(e, "address")}
                 />
-                <Button variant="contained" onClick={handleClick}>Cadastrar</Button>
+                <Button sx={{backgroundColor: '#009adf', borderRadius: '7px', margin: '20px 0px'}} variant="contained" onClick={handleClick}>Cadastrar</Button>
             </form>
         </div>
     )
