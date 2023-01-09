@@ -27,7 +27,7 @@
 }
 
 .link:hover{
-    color: #f180ac;
+    color: #009adf;
 }
 
 .divButton {
@@ -39,7 +39,7 @@
 
 .divButton button {
     margin-left: 1rem;
-    background-color: #f180ac;
+    background-color: #009adf;
     height: 2rem;
     width: 7rem;
     border-radius: 7px;
