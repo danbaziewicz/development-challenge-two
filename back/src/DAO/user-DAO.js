@@ -2,7 +2,7 @@ import db from "../database/conect.js"
 
 const daoUser = {
     getUsers: () => {
-        const GET_USER = 'SELECT * FROM USERS'
+        const GET_USER = 'SELECT * FROM users'
         return new Promise((resolve, reject) => {
             db.query(GET_USER, (error, row) => {
                 if (error) {
@@ -15,7 +15,7 @@ const daoUser = {
     },
 
     getUserId: (id) => {
-        const GET_USER_ID = 'SELECT * FROM USERS WHERE id = ?'
+        const GET_USER_ID = 'SELECT * FROM users WHERE id = ?'
 
         return new Promise((resolve, reject) => {
             db.query(GET_USER_ID, id, (error, row) => {
@@ -48,7 +48,7 @@ const daoUser = {
     },
 
     updateUser: (id, newUser) => {
-        const UPDATE_USER = `UPDATE USERS
+        const UPDATE_USER = `UPDATE users
         SET name = ?,
         birth_date = ?,
         email = ?,
@@ -68,7 +68,7 @@ const daoUser = {
     },
 
     deleteUser: (id) => {
-        const DELETE_USER = `DELETE FROM USERS WHERE id = ?`
+        const DELETE_USER = `DELETE FROM users WHERE id = ?`
 
         return new Promise((resolve, reject) => {
             db.query(DELETE_USER, id, (error, row) => {
