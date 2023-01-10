@@ -5,7 +5,8 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    height: 210px;
+    height: 300px;
+    width: 350px;
     justify-content: space-around;
 }
 
