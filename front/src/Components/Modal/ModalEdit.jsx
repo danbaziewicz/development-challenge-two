@@ -22,8 +22,8 @@ const ModalEdit = (obj) => {
         const body = {...formPut}
         body.birth_date = dataForm.birth_date;
         updateUser(obj.id, body)
-        obj.setReload(true)
         setOpen(false)
+        obj.setReload(true)
     }
 
     function handleChangeUpdate(e, key) {
