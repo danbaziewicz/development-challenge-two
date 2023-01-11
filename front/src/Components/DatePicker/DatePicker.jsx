@@ -5,10 +5,12 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { UserContext } from '../../context/UserProvider';
+import moment from 'moment';
 
-export default function MaterialUIPickers() {
-  const [value, setValue] = useState(null);
+export default function MaterialUIPickers(data) {
   const { dataForm } = useContext(UserContext);
+  const datanasc = moment(data.birth_date).utc().format("YYYY/MM/DD")
+  const [value, setValue] = useState(datanasc);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
