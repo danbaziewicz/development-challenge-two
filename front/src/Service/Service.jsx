@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "http://challengemedcloud.fly.dev"
+    baseURL: "https://challengemedcloud.fly.dev"
 });
 
 export const getUser = async () => {
