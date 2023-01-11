@@ -7,14 +7,14 @@ import { updateUser } from '../../Service/Service.jsx';
 import moment from 'moment';
 
 const ModalEdit = (obj) => {
-    const dataNascimento = moment(obj.birth_date).format("DD/MM/YYYY")
+    const dataNascimento = moment(obj.birth_date).utc().format("DD/MM/YYYY")
     const {dataForm}= useContext(UserContext);
     const [open, setOpen] = useState(false);
     const [formPut, setFormPut] = useState({
-        name: "",
+        name: obj.name,
         birth_date: "",
-        email: "",
-        address: ""
+        email: obj.email,
+        address: obj.address
     })
 
     function editUser (e) {
@@ -37,19 +37,7 @@ const ModalEdit = (obj) => {
             <Modal className={S.divDados} hideBackdrop sx={{ backgroundColor: 'white' }} open={open} onClose={()=>setOpen(false)}>
                 <Box className={S.boxModal}>
                     <div className={S.divClientes}>
-                        <h2>{obj.name}</h2>
-                        <p>
-                            <b>Nascimento: </b>
-                            {dataNascimento}
-                        </p>
-                        <p>
-                            <b>Email: </b>
-                            {obj.email}
-                        </p>
-                        <p>
-                            <b>Endereço: </b>
-                            {obj.address}
-                        </p>
+                        <h2>Editar</h2>
                     </div>
                     <TextField
                         sx={{ width: '250px', padding: '10px'}}
@@ -68,7 +56,8 @@ const ModalEdit = (obj) => {
                         value={formPut.name}
                         onChange={(e) => handleChangeUpdate(e, "name")} 
                         />
-                    <DatePicker />
+
+                    <DatePicker birth_date={obj.birth_date} />
 
                     <TextField 
                         sx={{ width: '250px', padding: '10px'}}
