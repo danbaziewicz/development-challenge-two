@@ -3,29 +3,13 @@ import db from "../database/conect.js"
 const daoUser = {
     getUsers: () => {
         const GET_USER = `SELECT id, name, DATE_FORMAT(birth_date,'%Y-%m-%d') as birth_date, email, address FROM users`
-        return new Promise((resolve, reject) => {
-            db.query(GET_USER, (error, row) => {
-                if (error) {
-                    reject(error)
-                } else {
-                    resolve(row)
-                }
-            })
-        })
+        return executeQuery(GET_USER)
     },
 
     getUserId: (id) => {
         const GET_USER_ID = 'SELECT * FROM users WHERE id = ?'
 
-        return new Promise((resolve, reject) => {
-            db.query(GET_USER_ID, id, (error, row) => {
-                if (error) {
-                    reject(error)
-                } else {
-                    resolve(row)
-                }
-            })
-        })
+        return executeQuery(GET_USER_ID, id)
     },
 
     insertUser: (user) => {
@@ -34,17 +18,16 @@ const daoUser = {
         VALUES (?, ?, ?, ?)
         `
 
-        return new Promise((resolve, reject) => {
-            db.query(INSERT_USER, [user.name, user.birth_date, user.email, user.address],
-                (error) => {
-                    if (error) {
-                        reject(error)
-                    } else {
-                        resolve(user)
-                    }
-                }
-            )
-        })
+        return executeQuery(
+            INSERT_USER,
+            [
+                user.name,
+                user.birth_date,
+                user.email,
+                user.address,
+            ],
+            `User successfully inserted`
+        )
     },
 
     updateUser: (id, newUser) => {
@@ -76,7 +59,7 @@ const executeQuery = (query, params, msg) => {
             if (error) {
                 reject(error)
             } else {
-                resolve(msg)
+                resolve(row) && resolve(msg)
             }
         })
     })
