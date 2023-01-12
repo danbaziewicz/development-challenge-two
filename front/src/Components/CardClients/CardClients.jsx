@@ -5,9 +5,9 @@ import S from './CardClients.module.css'
 import moment from 'moment';
 
 
-const CardClients = ( 
+const CardClients = (
     obj) => {
-  const dataNascimento = moment(obj.birth_date).utc().format("DD/MM/YYYY")
+        const dataNascimento = moment(obj.birth_date).utc().format("DD/MM/YYYY")
   return (
     <div className={S.divCard}>
         <h2> {obj.name}</h2>
