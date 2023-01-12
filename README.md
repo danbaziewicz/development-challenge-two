@@ -1,71 +1,126 @@
-# Development challenge
+# <h1>Desenvolvimento Logtime</h1>
 
-![logo medcloud-03 white copy](https://user-images.githubusercontent.com/46347123/158176045-de9fefb0-35e2-4515-83ff-c132608aa870.png)
+  Aplicação com CRUD de clientes utilizando base de dados na nuvem.
 
-About Medcloud:
+  ## Tecnologias utilizadas:
+  * ReactJS
+  * CSS
+  * Material-UI
+  * Axios
+  * Vercel
+  * AWS RDS MySQL
+  * Fly.io
+  * Node.js
+  * Git
 
-We make exams and medical data management more flexible, secure and effective by accelerating the transition from clinics and hospitals to the cloud.
-The RIS and PACS systems have been practically the same for the past 25 years. Interoperability problems, high costs and a lack of understanding about the patient's access to his medical records.
+  ## Deploys:
+    * Frontend: [Vercel](https://development-challenge-6zzd2zs1b-danbaziewicz.vercel.app/)
+    * Backend: [Fly.io](https://challengemedcloud.fly.dev)
+    * Banco de Dados: AWS RDS MySql
 
-These points defined limits for the doctor-patient relationship and barriers to radiology workflows. We are revolutionizing this through a Care Coordination based solution that improves workflows for providers and integrates doctors and patients for a better experience.
+    ## Para rodar o projeto
+    Na pasta raiz do projeto:
+    ```
+    cd back
+    ```
+    Instale as dependências:
+    ```
+    npm i
+    ```
+    Execute a API:
+    ```
+    nodemon server.js
 
-Since our foundation, almost 10 years ago, we have prioritized excellence in the management of health data, structuring workflows of health professionals, clinics, laboratories and hospitals for assertive and quality diagnostics.
+    Para iniciar o front:
+    ```
+    cd front
+    ```
+    Instale as dependências:
+    ```
+    npm i
+    Execute o projeto:
+    ```
+    npm run dev
 
-We understand that behind each medical record there is a patient seeking to improve his health and the hope of family members for his well being. After all, we are all patients, and Medcloud's mission is to help you live longer and better. #PatientFirst
+    ## Instruções da API:
 
-Medcloud's challenge for Dev Full Stack.
+    URL Base: https://challengemedcloud.fly.dev
 
-## Goal
+    #### POST /users
+       body:
+       {
+        "name": "Clayton Anderson",
+		"birth_date": "1992-07-20",
+		"email": "claytonanderson@exemple.com",
+		"address": "James St"
+       }
 
-- To develop a web application (CRUD) to manage patient registers (Patient's name, birth date, email and address) using a cloud database.
+       response:
+       {
+          "msg": "Usuário inserido com sucesso",
+          "user": {
+		    "name": "teste api",
+		    "birth_date": "1992-07-11",
+		    "email": "adsdasd@dasdas.com",
+		    "address": "rua zerozerozero"
+	      }
+        }
 
-## Required
+    #### GET /users
+    response:
+    {
+	"users": [
+		{
+			"id": 1,
+			"name": "Clayton Anderson",
+			"birth_date": "1992-07-20",
+			"email": "claytonanderson@exemple.com",
+			"address": "James St"
+		},
+		{
+			"id": 12,
+			"name": "Vivan Diaz",
+			"birth_date": "1992-08-04",
+			"email": "vivan.diaz@example.com",
+			"address": "Valwood Pkwy"
+		}
+    ]}
 
-- You need to develop both the front-end and the back-end.
-- In the front-end you MUST use React.
-- In the back-end you MUST use Node.js and AWS free-tier.
-- The patient data should not be static or local.
-- Field validation (date, required fields, etc)
-- AWS RDS MySQL, PostgreSQL or DynamoDB as database.
-- AWS Lambda for serveless computing.
-- AWS API Gateway for managing your REST API.
+    #### GET /users/id/:id
+    response:
+    {
+	"usuário": [
+		{
+			"id": 1,
+			"name": "Clayton Anderson",
+			"birth_date": "1992-07-20T03:00:00.000Z",
+			"email": "claytonanderson@exemple.com",
+			"address": "James St"
+		}
+	]
+    }
 
-## Extra Points
+    #### PUT /users/id/:id
+    body:
+    {
+		"name": "Edit Test",
+		"birth_date": "1992-07-11",
+		"email": "edit.text@exemple.com",
+		"address": "Valwood Pkwy"
+    }
+    response:
+    {
+	"msg": "Usuário atualizado com sucesso",
+	"user": {
+		"name": "Edit Test",
+		"birth_date": "1992-07-11",
+		"email": "edit.text@exemple.com",
+		"address": "Valwood Pkwy"
+	}
+    }
 
-- Cache the data in-browser.
-- Pagination.
-- Use Material UI - https://material-ui.com.
-- A cool design.
-
-## References
-
-- Intro to React: https://reactjs.org/tutorial/tutorial.html.
-- Core Components of Amazon DynamoDB: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html.
-- Getting Started with DynamoDB: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStartedDynamoDB.html.
-- Getting started with AWS Lambda: https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html.
-- Create a REST API with Lambda integrations in Amazon API Gateway: https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-getting-started-with-rest-apis.html.
-
-## What will be evaluated:
-
-- Clean and organized code (naming, etc.)
-- Knowledge of patterns (PSRs, design patterns, SOLID)
-- Be consistent and know how to argue your choices
-- Present solutions you master
-- Data Modeling
-- Code maintainability
-- Error handling
-- Architecture (structuring thought before writing)
-- Affection in decoupling components (other layers, service, repository)
-
-According to the above criteria, we will evaluate your test in order to proceed to the technical interview. If you have not acceptably achieved what we are proposing above, we will not proceed with the process.
-
-## Delivery
-
-You MUST fork this repository to your own account and push you code to it. 
-When you finish it, you must send a email to cv@medcloud.com.br with your curriculum and your fork.
-
-Good luck! Any doubts, feel free to send an email to cv@medcloud.com.br.
-
-## For the day of the technical interview and code review
-
-On the date set by the recruiter, have your application running on your local machine to run the tests and to show us the points developed and possible questions. We will do a code review together with you as if you were already on our team, you will be able to explain what you thought, how you architected and how the project can evolve. Good luck!
+    #### DELETE /users/id/:id
+    response:
+    {
+	"msg": "Usuário 1 deletado com sucesso"
+    }
