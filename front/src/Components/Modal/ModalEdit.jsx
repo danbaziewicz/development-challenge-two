@@ -4,11 +4,9 @@ import { useContext, useState, useEffect } from 'react'
 import S from '../Modal/StyleModal.module.css'
 import { UserContext } from '../../context/UserProvider.jsx';
 import { updateUser } from '../../Service/Service.jsx';
-import moment from 'moment';
-import styles from './Styles'
+import styles from '../../Styles/Styles'
 
 const ModalEdit = (obj) => {
-    const dataNascimento = moment(obj.birth_date).utc().format("DD/MM/YYYY")
     const { resetDataForm, getFormattedDate }= useContext(UserContext);
     const [open, setOpen] = useState(false);
     const [formPut, setFormPut] = useState({})
@@ -36,7 +34,7 @@ const ModalEdit = (obj) => {
 
     return (
         <div>
-            <Button sx={{backgroundColor: '#009adf', borderRadius: '7px'}}
+            <Button sx={styles.button}
             variant='contained'
             onClick={() =>
             setOpen(true)}>Editar</Button>
@@ -89,8 +87,8 @@ const ModalEdit = (obj) => {
                         />
                     <Typography>Confirmar alterações?</Typography>
                     <div className={S.buttons}>
-                        <Button sx={{backgroundColor: '#009adf', borderRadius: '7px', margin: '0px 3px'}} variant='contained' onClick={(e) => editUser(e)}>Confirmar</Button>
-                        <Button sx={{borderRadius: '7px', margin: '0px 3px'}} color="error" variant='outlined' onClick={handleCancel}>Cancelar</Button>
+                        <Button sx={styles.button} variant='contained' onClick={(e) => editUser(e)}>Confirmar</Button>
+                        <Button sx={styles.buttonError} color="error" variant='outlined' onClick={handleCancel}>Cancelar</Button>
                     </div>
                 </Box>
             </Modal>
