@@ -13,10 +13,10 @@
   * Node.js
   * Git
 
-  ## Deploys:
-    * Frontend: [Vercel](https://development-challenge-6zzd2zs1b-danbaziewicz.vercel.app/)
-    * Backend: [Fly.io](https://challengemedcloud.fly.dev)
-    * Banco de Dados: AWS RDS MySql
+## Deploys:
+* Frontend: [Vercel](https://development-challenge-6zzd2zs1b-danbaziewicz.vercel.app/)
+* Backend: [Fly.io](https://challengemedcloud.fly.dev)
+* Banco de Dados: AWS RDS MySql
 
     ## Para rodar o projeto
     Na pasta raiz do projeto:
@@ -30,7 +30,7 @@
     Execute a API:
     ```
     nodemon server.js
-
+    ```
     Para iniciar o front:
     ```
     cd front
@@ -38,35 +38,37 @@
     Instale as dependências:
     ```
     npm i
+    ```
     Execute o projeto:
     ```
     npm run dev
+    ```
 
-    ## Instruções da API:
+## Instruções da API:
 
-    URL Base: https://challengemedcloud.fly.dev
+URL Base: https://challengemedcloud.fly.dev
 
-    #### POST /users
-       body:
-       {
-        "name": "Clayton Anderson",
-		"birth_date": "1992-07-20",
-		"email": "claytonanderson@exemple.com",
-		"address": "James St"
-       }
+#### POST /users
+	body:
+	{
+	  "name": "Clayton Anderson",
+	  "birth_date": "1992-07-20",
+	  "email": "claytonanderson@exemple.com",
+	  "address": "James St"
+	}
 
-       response:
-       {
-          "msg": "Usuário inserido com sucesso",
-          "user": {
-		    "name": "teste api",
-		    "birth_date": "1992-07-11",
-		    "email": "adsdasd@dasdas.com",
-		    "address": "rua zerozerozero"
-	      }
-        }
+	response:
+	{
+	  "msg": "Usuário inserido com sucesso",
+	  "user": {
+	  	"name": "Clayton Anderson",
+	  	"birth_date": "1992-07-20",
+	  	"email": "claytonanderson@exemple.com",
+	  	"address": "James St"
+	  }
+	}
 
-    #### GET /users
+#### GET /users
     response:
     {
 	"users": [
@@ -86,7 +88,7 @@
 		}
     ]}
 
-    #### GET /users/id/:id
+#### GET /users/id/:id
     response:
     {
 	"usuário": [
@@ -100,7 +102,7 @@
 	]
     }
 
-    #### PUT /users/id/:id
+#### PUT /users/id/:id
     body:
     {
 		"name": "Edit Test",
@@ -119,7 +121,7 @@
 	}
     }
 
-    #### DELETE /users/id/:id
+#### DELETE /users/id/:id
     response:
     {
 	"msg": "Usuário 1 deletado com sucesso"
