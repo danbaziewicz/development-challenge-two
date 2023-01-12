@@ -10,21 +10,22 @@ h2 {
     height: 100%;
     color: #f7f7f7;
   }
-  
+
   .divClientes h1 {
     color: #f7f7f7;
     margin-top: 50px;
     margin-bottom: 10px;
   }
-  
+
   .card {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
     grid-template-columns: repeat(4, auto);
-    grid-column-gap: 38px;   
+    grid-column-gap: 38px;
   }
-  
+
   .msgEnd {
     margin-top: 50px;
     margin-left: 30px;
