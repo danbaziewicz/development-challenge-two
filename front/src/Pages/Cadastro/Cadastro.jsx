@@ -5,7 +5,8 @@ import DatePicker from "../../Components/DatePicker/DatePicker.jsx"
 import S from "../Cadastro/Cadastro.module.css"
 
 const Cadastro = () => {
-    const { dataForm, handleChange, handleClick } = useContext(UserContext);
+    const { dataForm, handleChange, handleClick, getFormattedDate } = useContext(UserContext);
+
     return (
         <div className={S.divForm}>
             <form>
@@ -18,12 +19,15 @@ const Cadastro = () => {
                     name="name"
                     variant="outlined"
                     value={dataForm.name}
-                    onChange={(e) => handleChange(e, "name")} 
+                    onChange={(e) => handleChange(e.target.value, "name")}
                 />
-                
-                <DatePicker />
 
-                <TextField 
+                <DatePicker
+                    value={dataForm.birth_date}
+                    onChange={(value) => handleChange(getFormattedDate(value), "birth_date")}
+                />
+
+                <TextField
                     sx={{ width: '250px', padding: '10px'}}
                     id="outlined-basic"
                     required
@@ -31,9 +35,9 @@ const Cadastro = () => {
                     name="email"
                     variant="outlined"
                     value={dataForm.email}
-                    onChange={(e) => handleChange(e, "email")}
+                    onChange={(e) => handleChange(e.target.value, "email")}
                 />
-                <TextField 
+                <TextField
                     sx={{ width: '250px', padding: '10px'}}
                     required
                     id="outlined-basic"
@@ -41,7 +45,7 @@ const Cadastro = () => {
                     name="address"
                     variant="outlined"
                     value={dataForm.address}
-                    onChange={(e) => handleChange(e, "address")}
+                    onChange={(e) => handleChange(e.target.value, "address")}
                 />
                 <Button sx={{backgroundColor: '#009adf', borderRadius: '7px', margin: '20px 0px'}} variant="contained" onClick={handleClick}>Cadastrar</Button>
             </form>
