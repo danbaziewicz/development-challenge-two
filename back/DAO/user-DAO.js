@@ -2,7 +2,7 @@ import db from "../database/conect.js"
 
 const daoUser = {
     getUsers: () => {
-        const GET_USER = 'SELECT * FROM users'
+        const GET_USER = `SELECT id, name, DATE_FORMAT(birth_date,'%Y-%m-%d') as birth_date, email, address FROM users`
         return new Promise((resolve, reject) => {
             db.query(GET_USER, (error, row) => {
                 if (error) {
@@ -48,38 +48,38 @@ const daoUser = {
     },
 
     updateUser: (id, newUser) => {
-        const UPDATE_USER = `UPDATE users
-        SET name = ?,
-        birth_date = ?,
-        email = ?,
-        address = ?
-        WHERE id = ?`
+        const UPDATE_USER = `UPDATE users SET name = ?, birth_date = ?, email = ?, address = ? WHERE id = ?`
 
-        return new Promise((resolve, reject) => {
-            db.query(UPDATE_USER, [newUser.name, newUser.birth_date, newUser.email, newUser.address, id],
-                (error) => {
-                    if (error) {
-                        reject(error)
-                    } else {
-                        resolve(newUser)
-                    }
-                })
-        })
+        return executeQuery(
+            UPDATE_USER,
+            [
+                newUser.name,
+                newUser.birth_date,
+                newUser.email,
+                newUser.address,
+                id
+            ],
+            `User ${id} successfully updated`
+        )
     },
 
     deleteUser: (id) => {
         const DELETE_USER = `DELETE FROM users WHERE id = ?`
 
-        return new Promise((resolve, reject) => {
-            db.query(DELETE_USER, id, (error, row) => {
-                if (error) {
-                    reject(error)
-                } else {
-                    resolve(`User ${id} successfully deleted`)
-                }
-            })
-        })
+        return executeQuery(DELETE_USER, id, `User ${id} successfully deleted`)
     }
+}
+
+const executeQuery = (query, params, msg) => {
+    return new Promise((resolve, reject) => {
+        db.query(query, params, (error, row) => {
+            if (error) {
+                reject(error)
+            } else {
+                resolve(msg)
+            }
+        })
+    })
 }
 
 export default daoUser
