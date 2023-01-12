@@ -6,27 +6,38 @@ export const UserContext = createContext();
 const UserProvider = ({children}) => {
     const [dataForm, setDataForm] = useState({
         name: "",
-        birth_date: "",
+        birth_date: null,
         email: "",
-        address: "",   
+        address: "",
     })
 
     const [userList, setUserList] = useState([]);
 
-    function handleChange(e, key) {
-        setDataForm({...dataForm, [key]: e.target.value});
+    function handleChange(value, key) {
+        setDataForm({...dataForm, [key]: value});
     }
 
-    function handleClick(e) {
-        e.preventDefault();
-        insertUser(dataForm);
-        setUserList([...userList, dataForm]);
+    function resetDataForm() {
         setDataForm({
             name: "",
-            birth_date: "",
+            birth_date: null,
             email: "",
-            address: ""   
+            address: ""
         });
+    }
+
+    function getFormattedDate(value) {
+        if (value) {
+            return `${value.$y}/${value.$M+1}/${value.$D}`
+        }
+        return ''
+    }
+
+    async function handleClick(e) {
+        e.preventDefault();
+        await insertUser(dataForm);
+        setUserList([...userList, dataForm]);
+        resetDataForm()
         alert(`User ${dataForm.name} cadastrado com sucesso.`)
     }
 
@@ -35,6 +46,8 @@ const UserProvider = ({children}) => {
         userList: userList,
         handleChange: handleChange,
         handleClick: handleClick,
+        resetDataForm: resetDataForm,
+        getFormattedDate: getFormattedDate,
     };
 
     return (
